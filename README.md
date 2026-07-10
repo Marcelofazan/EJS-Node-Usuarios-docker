@@ -1,6 +1,9 @@
 ## 🌐 EJS-Usuario-Node-docker
 Exemplo de Historico de Senhas em EJS e Node.js com banco de dados MongoDB. 
 
+#### 🎨 Aqui está uma demonstração do projeto
+<img width="700" height="350" alt="HistoricoSenha" src="https://github.com/user-attachments/assets/b038583e-ce9f-438f-9c8f-dcdb814ce4af" />
+
 #### 📋 O que voçê vai ver nesse Projeto
 
 | Tecnologia | Descrição |
