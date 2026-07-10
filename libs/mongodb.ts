@@ -12,33 +12,36 @@ if (!dbName) {
     throw new Error("MONGODB_DB_NAME is not defined in the environment variables");
 }
 
-/**
- * Retorna a instância do banco de dados reutilizando a conexão existente.
- * O maxPoolSize padrão de 100 é mantido para este servidor OLTP.
- */
-let client: MongoClient | null = null;
+// CORREÇÃO: Permite explicitamente o tipo MongoClient/Db ou null
+let clientInstance: MongoClient | null = null;
+let dbInstance: Db | null = null;
 
+/**
+ * Retorna a instância do cliente MongoDB reutilizando a conexão existente.
+ */
 export async function getClient(): Promise<MongoClient> {
-    if (!client) {
-        client = new MongoClient(uri, {
+    if (!clientInstance) {
+        clientInstance = new MongoClient(uri, {
             connectTimeoutMS: 5000,
             socketTimeoutMS: 30000,
             serverSelectionTimeoutMS: 5000,
             appName: "devrel-github-typescript-passwordhistory"
         });
-        await client.connect();
+        await clientInstance.connect();
     }
-    return client;
+    return clientInstance;
 }
 
+/**
+ * Retorna a instância do banco de dados reutilizando a conexão existente.
+ */
 export async function getDb(): Promise<Db> {
     if (!dbInstance) {
-        // Cria o cliente MongoDB apenas uma vez para o ciclo de vida do processo
-        clientInstance = new MongoClient(uri); 
-        await clientInstance.connect();
+        // Reutiliza o cliente ou cria um novo se não existir
+        const client = await getClient();
         
         // Conecta especificamente no banco de dados validado
-        dbInstance = clientInstance.db(dbName);
+        dbInstance = client.db(dbName);
         console.log(`🍃 Conexão Singleton estabelecida com sucesso no banco: "${dbName}"`);
     }
     return dbInstance;
