@@ -26,7 +26,7 @@ docker compose down -v
 
 #### 🔄 Executar a aplicação Desenvolvimento Local
 
-VSCode Terminal [1] 
+VSCode Terminal [1.1] 
 ```bash
 npm install
 npm rum dev
