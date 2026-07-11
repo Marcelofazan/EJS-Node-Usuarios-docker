@@ -1,4 +1,4 @@
-## 🌐 EJS-Usuarios-Node-docker
+## 🌐 EJS-Node-Usuarios-docker
 Exemplo de Historico de Senhas em EJS e Node.js com banco de dados MongoDB. 
 
 #### 🎨 Aqui está uma demonstração do projeto
