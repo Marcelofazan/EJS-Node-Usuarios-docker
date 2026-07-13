@@ -13,6 +13,9 @@ Exemplo de Historico de Senhas em EJS e Node.js com banco de dados MongoDB.
 | **Express** | Framework web padrão e mais popular do Node.js |
 | **Zod** |  Biblioteca de validação e declaração de esquemas para JavaScript e TypeScript |
 
+#### 💬 Requisitos do Projeto
+- Necessário Docker instalado.
+
 #### 🔄 Executar a aplicação Docker
 VSCode Terminal [1] 
 - Criar Container
